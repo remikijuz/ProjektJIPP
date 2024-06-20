@@ -80,7 +80,17 @@ void CProjectMFCDoc::Serialize(CArchive& ar)
 			for (int i = 0; i < no_it; ++i)
 			{
 				tmp = (*pDat)[i].get();
-				ar << tmp.x << tmp.y << tmp.color << tmp.name;
+				// ar << tmp.x << tmp.y << tmp.color << tmp.name; 
+				// tutaj faktycznie zapisujesz wskaźnik... ar jest głupi najwyraźniej i nie rozumie że dostaje na wejście char* czyli stringa
+
+				
+				ar << tmp.x << tmp.y << tmp.color;
+				ar.WriteString(tmp.name);
+				// ale jak już mu powiesz że dajesz mu stringa, to się ar gniewał nie będzie 
+				// i zapisze tmp.name jako łańcuch znaków
+				
+				// ar.WriteString(CString(tmp.name));
+				// jakby ar nie chciał działać na wskaźniku char*, może trzeba będzie mu podać CStringa (ostrożnie!)
 			}
 		}
 
