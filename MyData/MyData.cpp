@@ -80,8 +80,8 @@ MY_POINT* MY_DATA::allocTab(MY_POINT* ptab, int n)
     }
     catch (std::bad_alloc)
     {
-        CExcept1App* pExp = (CExcept1App*)pExcept;
-        pExcept->PutMessage(1003);
+        //CExcept1App* pExp = (CExcept1App*)pExcept;
+        //pExcept->PutMessage(1003);
     }
 
     return ptab;
