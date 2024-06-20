@@ -12,6 +12,9 @@
 
 #include "resource.h" // main symbols
 
+// tutaj dołącz moduł except1
+#include "Except1.h" // jak się nie wywali
+
 class CMyDataApp : public CWinApp
 {
 public:
@@ -36,6 +39,9 @@ public:
     int numb;
     COLORREF color;
 
+    // tutaj musisz dodać instancję obiektu z Except1
+    CExcept1App logger;
+
     MY_POINT() : x(0), y(0), name(nullptr), numb(0), color(RGB(200, 200, 200)) {}
 
     MY_POINT(double xx, double yy, const char* _name = nullptr, int _numb = 0, COLORREF _color = RGB(200, 200, 200))
@@ -46,11 +52,17 @@ public:
             strcpy_s(name, strlen(_name) + 1, _name);
         }
         else {
+            // no i jak coś nie pójdzie
+            // to myk
+            logger.PutMessage(ERR_NAME_NULLPTR)
+            // na przykład
+
+            // ważne, zeby ten kod: ERR_NAME_NULLPTR był zdefiniowany i w Except1.h i w ITS_MESSAGE_APP w resource'ach Except1
             name = nullptr;
         }
     }
 
-    MY_POINT(const MY_POINT& other) // Konstruktor kopiuj�cy
+    MY_POINT(const MY_POINT& other) // Konstruktor kopiuj¹cy
     {
         x = other.x;
         y = other.y;
