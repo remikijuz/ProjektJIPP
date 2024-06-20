@@ -33,6 +33,19 @@ enum ITS_APP_MESSAGE
 	WM_DIS_MSG,
 	WM_CLEAR_OUTPUT,
 	WM_DIS_TOTALMES
+
+	// W tym miejscu trzeba dodać swoje komunikaty błędów
+	// np.
+	ERR_POINT_NULL_POINTER
+	ERR_DATA_NULL_POINTER
+	ERR_POINT_BAD_ALLOC
+	ERR_DATA_BAD_ALLOC
+	ERR_POINT_NULL_NAME
+	ERR_DATA_NULL_NAME
+	// i tym podobne
+
+	// potem, trzeba je dodać w resource'ach w MFC (tam gdzie jest zdefiniowany ITS_APP_MESSAGE)
+	// w każdym resource będzie trzeba napisać opis błędu... ja miałem tak około 30.
 };
 
 class EXCEPT1_API CExcept1App : public CWinApp
